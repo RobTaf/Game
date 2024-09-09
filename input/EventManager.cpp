@@ -52,6 +52,7 @@ void EventManager::handleEvent(sf::Event &event) {
                     if (currentBinding->m_details.m_keyCode != -1) {
                         currentBinding->m_details.m_keyCode = e_itr.second.m_code;
                     }
+                    std::cout << "Key pressed" << std::endl;
                     ++(currentBinding->m_count);
                     break;
                 }
@@ -63,12 +64,15 @@ void EventManager::handleEvent(sf::Event &event) {
                     if (currentBinding->m_details.m_keyCode != -1) {
                         currentBinding->m_details.m_keyCode = e_itr.second.m_code;
                     }
+                    std::cout << "Button pressed" << std::endl;
                     ++(currentBinding->m_count);
                     break;
                 }
             } else {
                 if (sfmlEvent == EventType::MouseWheel) {
                     currentBinding->m_details.m_mouseWheelDelta = event.mouseWheel.delta;
+                    std::cout << "Mouse wheel rotated" << std::endl;
+                    std::cout << currentBinding->m_details.m_mouseWheelDelta << std::endl;
                 } else if (sfmlEvent == EventType::WindowResized) {
                     currentBinding->m_details.m_size.x = event.size.width;
                     currentBinding->m_details.m_size.y = event.size.height;

@@ -18,13 +18,16 @@ public:
     bool isDone();
     bool isFullscreen();
     sf::Vector2u windowSize();
+    sf::FloatRect viewSpace();
 
     void Draw(sf::Drawable& drawable);
 
     EventManager* getEventManager();
+    sf::RenderWindow* getRenderWindow();
+
+    void close(EventDetails* details);
 
     // Triggerable actions
-    void close(EventDetails* details);
     void toggleFullscreen(EventDetails* details);
 
 private:

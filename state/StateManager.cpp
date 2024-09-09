@@ -45,6 +45,7 @@ void StateManager::draw() {
             --itr;
         }
         for (; itr != m_states.end(); ++itr) {
+            m_shared->m_window->getRenderWindow()->setView(itr->second->getView());
             itr->second->draw();
         }
     } else {
@@ -71,7 +72,7 @@ bool StateManager::hasState(const StateType &type) {
     return false;
 }
 
-void StateManager::switchTo(const StateType &type) {
+void StateManager::switchTo(const StateType& type) {
     m_shared->m_eventManager->setCurrentState(type);
     for (auto itr = m_states.begin(); itr != m_states.end(); ++itr) {
         if (itr->first == type) {
@@ -80,6 +81,8 @@ void StateManager::switchTo(const StateType &type) {
             BaseState* tempState = itr->second;
             m_states.erase(itr);
             m_states.emplace_back(tempType, tempState);
+            m_shared->m_window->getRenderWindow()->setView(tempState->getView());
+            return;
         }
     }
 
@@ -88,6 +91,7 @@ void StateManager::switchTo(const StateType &type) {
         m_states.back().second->deactivate();
     createState(type);
     m_states.back().second->activate();
+    m_shared->m_window->getRenderWindow()->setView(m_states.back().second->getView());
 }
 
 void StateManager::remove(const StateType &type) {
@@ -98,6 +102,7 @@ void StateManager::createState(const StateType &type) {
     auto newState = m_stateFactory.find(type);
     if (newState == m_stateFactory.end()) return;
     BaseState* state = newState->second();
+    state->m_view = m_shared->m_window->getRenderWindow()->getDefaultView();
     m_states.emplace_back(type, state);
     state->onCreate();
 }

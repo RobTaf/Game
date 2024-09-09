@@ -20,8 +20,8 @@ void Window::setup(std::string title, sf::Vector2u size)
     m_isDone = false;
     m_isFocused = true;
 
-    m_eventManager.addCallback(StateType(0), "Window_Close", &Window::close, this);
     m_eventManager.addCallback(StateType(0), "Toggle_Fullscreen", &Window::toggleFullscreen, this);
+    m_eventManager.addCallback(StateType(0), "Window_Close", &Window::close, this);
     create();
 }
 
@@ -83,10 +83,22 @@ sf::Vector2u Window::windowSize() {
     return m_size;
 }
 
+sf::FloatRect Window::viewSpace() {
+    // Reference system is not {(1 0), (0 1)}, rather {(1 0), (0 -1)}
+    sf::Vector2f viewCenter = m_window.getView().getCenter();
+    sf::Vector2f viewSize = m_window.getView().getSize();
+    sf::Vector2f halfViewSize(viewSize.x / 2, viewSize.y / 2);
+    return sf::FloatRect(viewCenter - halfViewSize, viewSize);
+}
+
 void Window::Draw(sf::Drawable& drawable) {
     m_window.draw(drawable);
 }
 
-EventManager *Window::getEventManager() {
+EventManager* Window::getEventManager() {
     return &m_eventManager;
+}
+
+sf::RenderWindow* Window::getRenderWindow() {
+    return &m_window;
 }

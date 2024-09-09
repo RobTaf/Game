@@ -15,7 +15,6 @@ public:
     void deactivate() override;
 
     void update(const sf::Time& time) override;
-
     void draw() override;
 };
 

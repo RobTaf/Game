@@ -4,6 +4,7 @@
 #include "BaseState.hpp"
 #include "../../input/Binding.hpp"
 
+
 #include <SFML/Graphics.hpp>
 
 class IntroState : public BaseState {
@@ -18,10 +19,9 @@ public:
     void deactivate() override;
 
     void update(const sf::Time& time) override;
-
     void draw() override;
     
-    void keepGoing(EventDetails* details);
+    void goOn(EventDetails* details);
 
 private:
     sf::Texture m_introTexture;

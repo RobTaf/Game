@@ -8,8 +8,7 @@ class StateManager;
 class BaseState {
     friend class StateManager;
 public:
-    BaseState(StateManager* stateManager) :
-        m_stateManager(stateManager), m_transparent(false), m_transcendent(false) {}
+    BaseState(StateManager* stateManager);
     virtual ~BaseState();
 
     virtual void onCreate() = 0;
@@ -28,9 +27,11 @@ public:
     bool isTranscendent();
 
     StateManager* getStateManager();
+    sf::View& getView();
 
 protected:
     StateManager* m_stateManager;
+    sf::View m_view;
     /// @brief Flag that allows to draw states under the current state.
     bool m_transparent;
     /// @brief Flag that allows to update states under the current state.
