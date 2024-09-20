@@ -9,12 +9,14 @@
 #include <sstream>
 
 #include "Binding.hpp"
+#include "../utility/Utility.hpp"
+#include "../state/StateType.hpp"
 
 using Bindings = std::unordered_map<std::string, Binding*>;
 // Having different states in a game will create situations where the same key or event
 // will be needed by at least two of the states. Grouping the callbacks together by state
 // and only invoking them if the current state is that of a callback.
-enum class StateType;
+// enum class StateType;
 using CallbackContainer = std::unordered_map<std::string, std::function<void(EventDetails*)>>;
 using Callbacks = std::unordered_map<StateType, CallbackContainer>;
 

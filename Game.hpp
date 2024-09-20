@@ -28,6 +28,7 @@ public:
 private:
     SharedContext m_context;
     StateManager m_stateManager;
+    EntityManager m_entityManager;
     Window m_window;
     sf::Clock m_clock;
     sf::Time m_elapsed;

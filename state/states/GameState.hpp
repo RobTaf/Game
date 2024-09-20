@@ -2,6 +2,9 @@
 #define GameState_hpp
 
 #include "BaseState.hpp"
+#include "../../input/Binding.hpp"
+#include "../../animation/spritesheet/SpriteSheet.hpp"
+#include "../../map/Map.hpp"
 
 class GameState : public BaseState {
 public:
@@ -16,6 +19,11 @@ public:
 
     void update(const sf::Time& time) override;
     void draw() override;
+
+    void mainMenu(EventDetails* details);
+
+private:
+    Map* m_map;
 };
 
 #endif

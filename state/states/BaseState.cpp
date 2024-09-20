@@ -26,7 +26,10 @@ bool BaseState::isTranscendent() {
     return m_transcendent;
 }
 
-sf::View &BaseState::getView()
-{
+StateManager* BaseState::getStateManager() {
+    return m_stateManager;
+}
+
+sf::View &BaseState::getView() {
     return m_view;
 }

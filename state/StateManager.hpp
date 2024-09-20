@@ -10,7 +10,9 @@
 #include "states/IntroState.hpp"
 #include "states/MainMenuState.hpp"
 #include "states/GameState.hpp"
+#include "../utility/Utility.hpp"
 #include "../utility/SharedContext.hpp"
+
 
 using StateFactory = std::unordered_map<StateType, std::function<BaseState*(void)>>;
 using StateContainer = std::vector<std::pair<StateType, BaseState*>>;

@@ -13,7 +13,7 @@ void IntroState::onCreate() {
     m_timePassed = 0.0f;
 
     sf::Vector2u windowSize = m_stateManager->getContext()->m_window->getRenderWindow()->getSize();
-    m_introTexture.loadFromFile("source/assets/river.jpg");
+    m_introTexture.loadFromFile(Utility::workingDirectory() + "/assets/images/river.jpg");
     m_introSprite.setTexture(m_introTexture);
     m_introSprite.setOrigin(m_introTexture.getSize().x / 2.0f, m_introTexture.getSize().y / 2.0f);
     m_introSprite.setPosition(windowSize.x / 2.0f, 0);

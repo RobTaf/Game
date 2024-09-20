@@ -10,7 +10,7 @@ MainMenuState::~MainMenuState()
 }
 
 void MainMenuState::onCreate() {
-    m_font.loadFromFile("source/assets/fonts/BebasNeue-Regular.ttf");
+    m_font.loadFromFile(Utility::workingDirectory() + "/assets/fonts/BebasNeue-Regular.ttf");
     m_text.setFont(m_font);
     m_text.setString(sf::String("MAIN MENU"));
     m_text.setCharacterSize(18);

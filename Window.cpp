@@ -91,12 +91,16 @@ sf::FloatRect Window::viewSpace() {
     return sf::FloatRect(viewCenter - halfViewSize, viewSize);
 }
 
-void Window::Draw(sf::Drawable& drawable) {
+void Window::draw(sf::Drawable& drawable) {
     m_window.draw(drawable);
 }
 
 EventManager* Window::getEventManager() {
     return &m_eventManager;
+}
+
+TextureManager* Window::getTextureManager() {
+    return &m_textureManager;
 }
 
 sf::RenderWindow* Window::getRenderWindow() {

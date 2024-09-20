@@ -148,7 +148,7 @@ sf::Vector2i EventManager::getMousePosition(sf::RenderWindow* window = nullptr) 
 void EventManager::loadBindings() {
     std::string delimiter = ":";
     std::ifstream bindings;
-    bindings.open("source/input/keys.cfg");
+    bindings.open(Utility::workingDirectory() + "assets/config/keys.cfg");
     if (not bindings.is_open()) {
         std::cout << "! Failed loading keys.cfg." << std::endl;
         return;

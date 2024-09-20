@@ -3,6 +3,7 @@
 
 #include <SFML/Graphics.hpp>
 #include "input/EventManager.hpp"
+#include "resource/TextureManager.hpp"
 
 class Window {
 public:
@@ -20,9 +21,10 @@ public:
     sf::Vector2u windowSize();
     sf::FloatRect viewSpace();
 
-    void Draw(sf::Drawable& drawable);
+    void draw(sf::Drawable& drawable);
 
     EventManager* getEventManager();
+    TextureManager* getTextureManager();
     sf::RenderWindow* getRenderWindow();
 
     void close(EventDetails* details);
@@ -36,6 +38,7 @@ private:
     void create();
 
     EventManager m_eventManager;
+    TextureManager m_textureManager;
     sf::RenderWindow m_window;
     sf::Vector2u m_size;
     std::string m_title;

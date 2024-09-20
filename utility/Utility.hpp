@@ -1,5 +1,5 @@
-#ifndef Utilities_hpp
-#define Utilities_hpp
+#ifndef Utility_hpp
+#define Utility_hpp
 #define RUNNING_WINDOWS
 
 #include <iostream>
@@ -21,8 +21,8 @@ namespace Utility {
         HMODULE hModule = GetModuleHandle(nullptr);
         if(hModule) {
             wchar_t path[256];
-            GetModuleFileName(hModule, path, sizeof(path));
-            PathRemoveFileSpec(path);
+            GetModuleFileNameW(hModule, path, sizeof(path) / sizeof(wchar_t));
+            PathRemoveFileSpecW(path);
             wcscat(path, L"\\"); // new
             return wideStringToString(path); // new
         }
